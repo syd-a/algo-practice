@@ -15,4 +15,13 @@ def quick_sort(array):
             higher.append(ele)
         else:
             lower.append(ele)
-    result = lower + [pivot] + higher
+    result = quick_sort(lower) + [pivot] + quick_sort(higher)
+    return result
+
+def use_quick_sort:
+    arr = [7, 5, 17, 9, 31, 22]
+    print("unsorted array: ", arr)
+    print("sorted array: ", quick_sort(arr))
+
+if __name__ == "__main__":
+    use_quick_sort()
