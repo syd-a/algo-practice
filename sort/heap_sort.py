@@ -53,6 +53,19 @@ class Heap:
 
         return result
 
+    def heapify(arr, i):
+        pass
+
+    def build_heap(arr):
+        heap_data = arr[:]
+        n = len(heap_data)
+        for i in range(n - 1, -1, -1):
+            heapify(heap_data, i)
+        result = Heap(0)
+        result.data = heap_data
+        result.size = n
+        return result
+
 def use_heap_sort():
     arr = [7, 5, 17, 9, 31, 22]
     print("unsorted array: ", arr)
