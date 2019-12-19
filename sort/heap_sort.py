@@ -54,13 +54,33 @@ class Heap:
         return result
 
     def heapify(arr, i):
-        pass
+        smallest_ind = i
+        smallest_val = arr[i]
+        left_ind = i * 2 + 1
+        right_ind = i * 2 + 1
+
+        if left_ind < len(arr):
+            left_child = arr[left_ind]
+            if left_child < smallest_val:
+                smallest_ind = left_ind
+                smallest_val = left_child
+
+        if right_ind < len(arr):
+            right_child = arr[right_ind]
+            if right_child < smallest_val:
+                smallest_ind = right_ind
+                smallest_val - right_child
+
+        if smallest_val == arr[i]:
+            more_to_switch = False
+        else:
+            arr[i], arr[smallest_ind] = arr[smallest_ind], arr[i]
 
     def build_heap(arr):
         heap_data = arr[:]
         n = len(heap_data)
         for i in range(n - 1, -1, -1):
-            heapify(heap_data, i)
+            Heap.heapify(heap_data, i)
         result = Heap(0)
         result.data = heap_data
         result.size = n
@@ -79,5 +99,17 @@ def use_heap_sort():
         sorted_arr.append(heap.pop())
     print("sorted array: ", sorted_arr)
 
+
+def use_heap_sort2():
+    arr = [7, 5, 17, 9, 31, 22]
+    print("unsorted array: ", arr)
+
+    heap = Heap.build_heap(arr)
+
+    sorted_arr = []
+    while not heap.is_empty():
+        sorted_arr.append(heap.pop())
+    print("sorted array: ", sorted_arr)
+
 if __name__ == "__main__":
-    use_heap_sort()
+    use_heap_sort2()
